@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button fill="clear" routerLink="/home"><ion-icon name="chevron-back-outline"></ion-icon>Back</ion-button>
+    <ion-title> Movies App </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="selection">
+    <img class="poster" src="{{details?.Poster}}" alt="">
+    <div class="details">
+      <h1>{{details?.Title}}</h1>
+      <p>{{details?.Year}} - {{details?.Language}} - {{details?.Runtime}}</p>
+      <!-- <h3>INFO</h3> -->
+      <p>{{details?.Plot}}</p>
+
+      <p class="rating"><ion-icon name="star-half-outline" size="large"></ion-icon>  {{details?.imdbRating}}/10 - {{details?.imdbVotes}}</p>
+
+
+      <h3>GENRE</h3>
+      <p class="info">{{details?.Genre}}</p>
+
+
+      <h3>DIRECTED BY</h3>
+      <p class="info">{{details?.Director}}</p>
+
+      <h3>ACTORS</h3>
+      <p class="info">{{details?.Actors}}</p>
+
+      <h3>COUNTRY</h3>
+      <p class="info">{{details?.Country}}</p>
+
+      <h3>AWARDS</h3>
+      <p class="info">{{details?.Awards}}</p>
+
+    </div>
+  </div>
+</ion-content>

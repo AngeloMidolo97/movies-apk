@@ -1,20 +1,55 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Movies App </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Movies App</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="selection">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <ion-searchbar placeholder="Search by Title" ngModel name="title"></ion-searchbar>
+
+      <div class="filter-box">
+        <div class="check">
+          <ion-checkbox ngModel name="movie">Movies</ion-checkbox>
+          <ion-checkbox ngModel name="serie">Series</ion-checkbox>
+        </div>
+
+        <ion-list>
+          <ion-item>
+            <ion-select
+              interface="popover"
+              placeholder="Sort By"
+              ngModel
+              name="sort"
+            >
+              <ion-select-option value="year">Year</ion-select-option>
+              <ion-select-option value="az">A - Z</ion-select-option>
+              <ion-select-option value="rating">Rating</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
+    </form>
+
+  </div>
+  <div class="results">
+
+    <ion-card *ngFor="let item of movies">
+      <img alt="Silhouette of mountains" src="{{item.Poster}}" />
+      <ion-card-header>
+        <ion-card-title>{{item.Title}}</ion-card-title>
+        <ion-card-subtitle>{{item.Type}} - {{item.Year}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-button expand="block" [routerLink]="['/detail/', item.imdbID]">DETAILS</ion-button>
+    </ion-card>
+
   </div>
 </ion-content>
