@@ -28,7 +28,10 @@ export class HomePage implements OnInit {
   getData(page: number) {
     page = this.page;
     this.apiSrv.getData(page).subscribe(data => {
-      this.movies = data.Search
+      //CICLO FOR PER AGGIUNGERE GLI ELEMENTI CARICATI DALL'INFINITE SCROLL ALL'INTERNO DELL'ARRAY
+      for (let i = 0; i < data.Search.length; i++) {
+        this.movies.push(data.Search[i])
+      }
     })
   }
 
@@ -76,6 +79,22 @@ export class HomePage implements OnInit {
         });
       }
     })
+  }
+
+  //INFINITE SCROLL CHE CARICA UNA NUOVA PAGINA DALL'API
+  onIonInfinite(ev: Event) {
+
+    this.page++
+
+    this.getData(this.page)
+
+    console.log(this.page)
+    console.log(this.movies);
+
+
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 
 }

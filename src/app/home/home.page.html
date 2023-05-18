@@ -51,5 +51,9 @@
       <ion-button expand="block" [routerLink]="['/detail/', item.imdbID]">DETAILS</ion-button>
     </ion-card>
 
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
   </div>
 </ion-content>

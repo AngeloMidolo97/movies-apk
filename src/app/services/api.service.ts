@@ -8,7 +8,7 @@ import { Details } from '../models/details';
 })
 export class ApiService {
 
-  url: string = "http://www.omdbapi.com/?apikey=5bc01210";
+  url: string = "https://www.omdbapi.com/?apikey=5bc01210";
 
   constructor(private http: HttpClient) { }
 
